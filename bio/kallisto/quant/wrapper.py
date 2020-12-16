@@ -16,9 +16,10 @@ extra = snakemake.params.get("extra", "")
 # Allowing for multiple FASTQ files
 n = len(snakemake.input.fastq)
 k = 2
-#assert ( 
-#    n == 1 or n % k == 2
-#), "input->sample must have 1 (single-end) or 2 (paired-end) elements."
+pe = 'R2' in snakemake.input.fastq
+assert ( 
+     (n % k == 0 and pe) or (pe == False and n >= 1)
+ ), "input->sample n (paired-end) elements must be divisible by 2."
 
 #TODO: change hardcoded PE suffix to configurable version
 if n == 1:
