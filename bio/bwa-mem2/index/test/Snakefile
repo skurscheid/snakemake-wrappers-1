@@ -2,11 +2,11 @@ rule bwa_mem2_index:
     input:
         "{genome}",
     output:
-        "{genome}.0123",
-        "{genome}.amb",
-        "{genome}.ann",
-        "{genome}.bwt.2bit.64",
-        "{genome}.pac",
+        "out/{genome}.0123",
+        "out/{genome}.amb",
+        "out/{genome}.ann",
+        "out/{genome}.bwt.2bit.64",
+        "out/{genome}.pac",
     log:
         "logs/bwa-mem2_index/{genome}.log",
     params:
